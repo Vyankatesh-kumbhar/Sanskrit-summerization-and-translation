@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskrit Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sanskrit Translator</h1>
+        <form action="/translate" method="post">
+            <label for="inputBox2">Input:</label>
+            <div class="textarea-container">
+                <textarea id="inputBox2" name="inputText2" placeholder="Enter your text here...">{{ request.form.get('inputText2', '') }}</textarea>
+                <div class="word-count" id="input-word-count2">0 words</div>
+            </div>
+
+            <button type="submit">Translate</button><br><br>
+
+            <label for="outputBox2">Output:</label>
+            <div class="textarea-container">
+                <textarea id="outputBox2" name="outputText2" readonly>{{ output_text2 }}</textarea>
+            </div>
+        </form>
+        <div class="navigation-buttons">
+            <a href="/"><button type="button" class="nav-button">Summarizer</button></a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

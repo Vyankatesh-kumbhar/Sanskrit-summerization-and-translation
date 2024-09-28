@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskrit Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sanskrit Summarizer</h1>
+        <form action="/" method="post">
+            <label for="inputBox">Input:</label>
+            <div class="textarea-container">
+                <textarea id="inputBox" name="inputText" placeholder="Enter your text here...">{{ request.form.get('inputText', '') }}</textarea>
+                <div class="word-count" id="input-word-count">0 words</div>
+            </div>
+
+            <label for="summary_line">Lines Required:</label>
+            <div class="input-container">
+                <select id="summary_line" name="summary_line">
+                    <option value="2" {{ 'selected' if request.form.get('summary_line') == '2' }}>2</option>
+                    <option value="4" {{ 'selected' if request.form.get('summary_line') == '4' }}>4</option>
+                    <option value="6" {{ 'selected' if request.form.get('summary_line') == '6' }}>6</option>
+                    <option value="8" {{ 'selected' if request.form.get('summary_line') == '8' }}>8</option>
+                    <option value="10" {{ 'selected' if request.form.get('summary_line') == '10' }}>10</option>
+                    <option value="15" {{ 'selected' if request.form.get('summary_line') == '15' }}>15</option>
+                    <option value="20" {{ 'selected' if request.form.get('summary_line') == '20' }}>20</option>
+                    <option value="25" {{ 'selected' if request.form.get('summary_line') == '25' }}>25</option>
+                    <option value="30" {{ 'selected' if request.form.get('summary_line') == '30' }}>30</option>
+                    <option value="40" {{ 'selected' if request.form.get('summary_line') == '40' }}>40</option>
+                    <option value="50" {{ 'selected' if request.form.get('summary_line') == '50' }}>50</option>
+
+                </select>
+            </div>
+
+            <button type="submit">Submit</button><br><br>
+
+            <label for="outputBox">Output:</label>
+            <div class="textarea-container">
+                <textarea id="outputBox" name="outputText" readonly>{{ output_text }}</textarea>
+                <div class="word-count" id="output-word-count">0 words</div>
+            </div>
+        </form>
+        <div class="navigation-buttons">
+            <a href="/translate"><button type="button" class="nav-button">Next: Translator</button></a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
